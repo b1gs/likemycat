@@ -25,11 +25,20 @@ public class BasicController {
 		
 	}
 	
-	@RequestMapping({"/index","/"})
-	public ModelAndView indexPage(){
+//	@RequestMapping({"/index","/"})
+//	public ModelAndView indexPage(){
+//		
+//		ModelAndView model = new ModelAndView();
+//		model.setViewName("index");
+//		return model;
+//		
+//	}
+	
+	@RequestMapping("/login")
+	public ModelAndView loginPage(){
 		
 		ModelAndView model = new ModelAndView();
-		model.setViewName("index");
+		model.setViewName("login");
 		return model;
 		
 	}
