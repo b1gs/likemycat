@@ -41,41 +41,41 @@
   </div>
 </div>
 
-<!-- <div id="wrapper-login"> -->
+<div id="wrapper-login">
 
-<%--     <c:if test="${not empty error}"> --%>
-<!--         <div class="errorblock"> -->
-<!--             Your login attempt was not successful, try again.<br /> Caused : -->
-<%--                 ${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message} --%>
-<!--         </div> -->
-<%--     </c:if> --%>
+    <c:if test="${not empty error}">
+        <div class="errorblock">
+            Your login attempt was not successful, try again.<br /> Caused :
+                ${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}
+        </div>
+    </c:if>
 
-<%--     <form name='f' action="<c:url value='j_spring_security_check' />" method='POST'> --%>
+    <form name='f' action="<c:url value='j_spring_security_check' />" method='POST'>
 
-<!--         <table class="horiz"> -->
-<!--             <tr> -->
-<!--                 <td>User:</td> -->
-<!--                 <td><input type='text' name='j_username' value=''> -->
-<!--                 </td> -->
-<!--             </tr> -->
-<!--             <tr> -->
-<!--                 <td>Password:</td> -->
-<!--                 <td><input type='password' name='j_password' /> -->
-<!--                 </td> -->
-<!--             </tr> -->
-<!--             <tr> -->
-<!--                 <td colspan='2'><input name="submit" type="submit" value="submit" class="btn btn-primary" /> -->
-<!--                 </td> -->
-<!--             </tr> -->
-<!--         </table> -->
+        <table class="horiz">
+            <tr>
+                <td>User:</td>
+                <td><input type='text' name='j_username' value=''>
+                </td>
+            </tr>
+            <tr>
+                <td>Password:</td>
+                <td><input type='password' name='j_password' />
+                </td>
+            </tr>
+            <tr>
+                <td colspan='2'><input name="submit" type="submit" value="submit" class="btn btn-primary" />
+                </td>
+            </tr>
+        </table>
 
-<%--     </form> --%>
+    </form>
 
-<!--     <br><br> -->
-<!--     <h1>OR</h1><br> -->
+    <br><br>
+    <h1>OR</h1><br>
 
-<!--     <a href="/register">REGISTER</a> in case you don't have an account yet. -->
+    <a href="/register">REGISTER</a> in case you don't have an account yet.
 
-<!-- </div> -->
+</div>
 </body>
 </html>
