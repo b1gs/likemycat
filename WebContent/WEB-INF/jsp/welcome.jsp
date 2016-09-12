@@ -82,7 +82,7 @@
     </div>
 
     <div id="sign_in" class="auth">
-        <form method="POST" action="${contextPath}/login">
+        <form method="POST" action="${contextPath}/j_security_check">
             <input data-name="username" class="b-input" type="text" id="username" autocomplete="username"
                    maxlength="255" name="username" placeholder="login">
             <input data-name="password" class="b-input" type="password" id="password" autocomplete="password"
