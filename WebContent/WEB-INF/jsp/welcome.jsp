@@ -73,45 +73,64 @@
 
 <!-- AUTHENTICATION SECTION -->
 <div id="auth_container">
-    <div id="tab_section">
-        <ul class="sign w3-navbar w3-teal">
-            <li><a href="#" onclick="openReg('sign_in')">Sing In</a></li>
-            <li><a href="#" onclick="openReg('sign_up')">Sign Up</a></li>
-        </ul>
-
-    </div>
-
-    <div id="sign_in" class="auth">
-        <form method="POST" action="${contextPath}/j_security_check">
-            <input data-name="username" class="b-input" type="text" id="username" autocomplete="username"
-                   maxlength="255" name="username" placeholder="login">
-            <input data-name="password" class="b-input" type="password" id="password" autocomplete="password"
-                   maxlength="255" name="password" placeholder="password">
-                   
-            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-            <div class="login">
-                <button type="submit">Login</button>
-            </div>
-        </form>
-    </div>
-    <div id="sign_up" class="auth">
-        <form>
-            <input class="b-input" type="text" id="username" autocomplete="username" maxlength="255" name="username"
-                   placeholder="login"><br>
-            <input class="b-input" type="password" id="reg_password" autocomplete="password" maxlength="255"
-                   name="password"
-                   placeholder="password"><br>
-            <input class="b-input" type="password" id="reg_password_repeat" autocomplete="password" maxlength="255"
-                   name="password"
-                   placeholder="repeat password">
+	<c:if test="${not empty user}">
+    	<div id="tab_section">
+	        <ul class="sign w3-navbar w3-teal">
+		        <form id="logoutForm" method="POST" action="${contextPath}/logout">
+		            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+		        </form>
+	      		<li><c:out value="Hello ${user}"></c:out> | <a onclick="document.forms['logoutForm'].submit()">Logout</a></li>
+	        </ul>
+	
+	    </div>
+	</c:if>
+	
+	<c:if test="${empty user}">
+    	
+	
+	    <div id="tab_section">
+	        <ul class="sign w3-navbar w3-teal">
+	        		 <li>Sing In</li>
+	<!--             <li><a href="#" onclick="openReg('sign_in')">Sing In</a></li> -->
+	<!--             <li><a href="#" onclick="openReg('sign_up')">Sign Up</a></li> -->
+	        </ul>
+	
+	    </div>
+	
+	
+	    <div id="sign_in" class="auth">
+	        <form method="POST" action="${contextPath}/j_security_check">
+	            <input data-name="username" class="b-input" type="text" id="username" autocomplete="username"
+	                   maxlength="255" name="username" placeholder="login">
+	            <input data-name="password" class="b-input" type="password" id="password" autocomplete="password"
+	                   maxlength="255" name="password" placeholder="password">
+	                   
+	            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+	            <div class="login">
+	            	<h4 class="text-center"><a href="${contextPath}/registration">Create an account</a></h4>
+	                <button type="submit">Login</button>
+	            </div>
+	        </form>
+	    </div>
+    </c:if>
+<!--     <div id="sign_up" class="auth"> -->
+<!--         <form> -->
+<!--             <input class="b-input" type="text" id="username" autocomplete="username" maxlength="255" name="username" -->
+<!--                    placeholder="login"><br> -->
+<!--             <input class="b-input" type="password" id="reg_password" autocomplete="password" maxlength="255" -->
+<!--                    name="password" -->
+<!--                    placeholder="password"><br> -->
+<!--             <input class="b-input" type="password" id="reg_password_repeat" autocomplete="password" maxlength="255" -->
+<!--                    name="password" -->
+<!--                    placeholder="repeat password"> -->
 			
-			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+<%-- 			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/> --%>
             
-            <div class="login">
-                <button type="submit">Submit</button>
-            </div>
-        </form>
-    </div>
+<!--             <div class="login"> -->
+<!--                 <button type="submit">Submit</button> -->
+<!--             </div> -->
+<!--         </form> -->
+<!--     </div> -->
 </div>
 
 <div id="footer">

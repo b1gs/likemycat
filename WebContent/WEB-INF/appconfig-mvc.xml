@@ -9,10 +9,10 @@
  	<mvc:annotation-driven />
  	<mvc:resources mapping="/resources/**" location="/resources/" />
 	
- 	<bean id = "messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+ 	<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
  		<property name="basenames">
  			<list>
- 				<value>classpash:validation</value>
+ 				<value>classpath:validation</value>
  			</list>
  		</property>
  	</bean>
