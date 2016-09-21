@@ -58,7 +58,7 @@ public class FileUploadController {
 		// .build().toString())
 		// .collect(Collectors.toList()));
 		model.addAttribute("postForm", new Post());
-		//model.setViewName("add");
+		// model.setViewName("add");
 		return "add";
 	}
 
@@ -75,12 +75,15 @@ public class FileUploadController {
 	// .body(file);
 	// }
 
+	//
 	@PostMapping("/add")
-	public String handleFileUpload(@RequestParam("filename") MultipartFile file, @ModelAttribute("postForm") ModelAttribute postForm,
+	public String handleFileUpload(@RequestParam("file") MultipartFile file, @ModelAttribute("postForm") Post postForm,
 			RedirectAttributes redirectAttributes) {
 
-		storageService.store(file);
-		//postService.save(postForm);
+		String filename = getFileExtension(file.getOriginalFilename());
+		storageService.store(file, filename);
+		postForm.setFilename(filename);
+		postService.save(postForm);
 		redirectAttributes.addFlashAttribute("message",
 				"You successfully uploaded " + file.getOriginalFilename() + "!");
 
@@ -90,6 +93,14 @@ public class FileUploadController {
 	@ExceptionHandler(StorageFileNotFoundException.class)
 	public ResponseEntity handleStorageFileNotFound(StorageFileNotFoundException exc) {
 		return ResponseEntity.notFound().build();
+	}
+
+	private String getFileExtension(String file) {
+
+		Long filename = System.currentTimeMillis();
+		String extension = filename + file.substring(file.lastIndexOf("."));
+
+		return extension;
 	}
 
 }

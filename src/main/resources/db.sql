@@ -4,6 +4,8 @@ USE `accounts`;
 -- Table structure for table `role`
 --
 
+SET FOREIGN_KEY_CHECKS=0;
+
 DROP TABLE IF EXISTS `role`;
 CREATE TABLE `role` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -67,3 +69,4 @@ CREATE TABLE `user_post` (
   `post_id` int(11) NOT NULL,
   PRIMARY KEY (`user_id`,`post_id`)  
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+SET FOREIGN_KEY_CHECKS=1;

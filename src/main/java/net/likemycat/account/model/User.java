@@ -20,6 +20,7 @@ public class User {
 	private String password;
 	private String passwordConfirm; 
 	private Set<Role> roles;
+	private Set<Post> posts;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -66,6 +67,14 @@ public class User {
 		this.roles = roles;
 	}
 
+	@OneToMany(mappedBy="user")
+	//@JoinTable(name = "user_post" , joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "post_id") )
+	public Set<Post> getPosts() {
+		return posts;
+	}
 
+	public void setPosts(Set<Post> posts) {
+		this.posts = posts;
+	}
 	
 }

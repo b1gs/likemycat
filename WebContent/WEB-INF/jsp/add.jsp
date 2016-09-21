@@ -30,14 +30,15 @@
         	<form:form method="POST" enctype="multipart/form-data" action="${contextPath}/add" modelAttribute="postForm">
 <%-- 	            <spring:bind path="title"> --%>
 		            <div class="form-group ${status.error ? 'has-error' : ''}">
-		                <form:input type="text" path="title" class="form-control" placeholder="Post title..."
+		                <form:input type="text" path="title" name="title" class="form-control" placeholder="Post title..."
 		                            autofocus="true" />
 		                <form:errors path="title"></form:errors>
 		            </div>
 <%-- 		        </spring:bind> --%>
 	            <!-- Create Post Section -->
 	            	
-<%-- 	            	<form:input type="hidden" path="filename" class="form-control" placeholder="Post title..." autofocus="true" /> --%>
+<%-- 	            	<form:input type="hidden" path="filename" name="filename" value="123123" class="form-control" placeholder="Post title..." autofocus="true" /> --%>
+<%-- 	            	<form:errors path="filename"></form:errors> --%>
 	            <div id="post_type">
 <!-- 	                <button id="create_post1" class="w3-btn w3-green"> -->
 <!-- 	                    image -->
@@ -46,8 +47,8 @@
 					<table>
 <%-- 						<spring:bind path="file"> --%>
 	            		<div class="form-group ${status.error ? 'has-error' : ''}">
-							<tr><td>File to upload:</td><td><form:input path="filename" type="file" name="filename" class="w3-btn w3-green"/></td></tr>
-							<form:errors path="title"></form:errors>
+							<tr><td>File to upload:</td><td><form:input path="file" type="file" name="file" class="w3-btn w3-green" /></td></tr>
+							<form:errors path="file"></form:errors>
 							<tr><td></td><td><form:button type="submit" value="Upload" class="w3-btn w3-green" >Upload</form:button></td></tr>
 						</div>
 <%-- 						</spring:bind> --%>
