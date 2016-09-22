@@ -3,6 +3,8 @@
  */
 package net.likemycat.account.controller.web;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -15,7 +17,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import net.likemycat.account.model.Post;
 import net.likemycat.account.model.User;
+import net.likemycat.account.service.PostService;
 import net.likemycat.account.service.SecurityService;
 import net.likemycat.account.service.UserService;
 import net.likemycat.account.validator.UserValidator;
@@ -27,6 +31,9 @@ import net.likemycat.account.validator.UserValidator;
 @Controller
 public class UserController {
 
+	@Autowired
+	private PostService postService;
+	
 	@Autowired
 	private UserService userService;
 
@@ -62,7 +69,9 @@ public class UserController {
 
 		ModelAndView modelObj = new ModelAndView();
 		modelObj.setViewName("welcome");
-		modelObj.addObject("valid", true);
+		List<Post> postList = postService.findAll();
+		modelObj.addObject("postList", postList);
+
 		if (SecurityContextHolder.getContext().getAuthentication().getAuthorities().contains(new SimpleGrantedAuthority("ROLE_USER"))) {
 			modelObj.addObject("user", SecurityContextHolder.getContext().getAuthentication().getName());
 		}

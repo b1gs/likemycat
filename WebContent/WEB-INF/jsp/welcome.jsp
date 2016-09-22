@@ -1,4 +1,5 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html>
@@ -15,6 +16,7 @@
 
 <body>
 
+<!-- Not comleted  -->
 <div id="header" class="menu">
     <ul class="w3-navbar w3-black">
         <li><a href="#" class="tablink w3-grey" onclick="openCity(event,'Hot')">Hot</a></li>
@@ -24,117 +26,68 @@
 </div>
 
 
-<!-- CONTENT SECTION -->
-<div id="content">
-    <div id="Hot" class="w3-container news">
-        <div class="post" >
-            <table>
-                <tr class="post_header" >
-                    <td class="post_rate" align="center" width="100px">
-                        <ul class="post_rate">
-                            <li><img src="resources/images/arroy_up.png"/></li>
-                            <li>0</li>
-                            <li><img src="resources/images/arroy_down.png"/></li>
-                        </ul>
-                    </td>
-                    <td  align="left">
-                        <ul class="post_title">
-                            <li>Look at my pretty kitty!!!</li>
-                            <li class="title_desc">
-                                <h6>
-                                    <img src="resources/images/hide_over_tgp.png" />
-                                    <a href="">0 comments;</a>
-                                    comming from
-                                    <a href="">b1gs</a>
-                                    4 hours ago;
-                                </h6>
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2" align="center"><img src="resources/images/fibi.jpg" width="70%" alt="fibi"/></td>
-                </tr>
-
-            </table>
-        </div>
-    </div>
-
-    <div id="Best" class="w3-container news">
-        <h2>Best</h2>
-        <p>Best content</p>
-    </div>
-
-    <div id="Fresh" class="w3-container news">
-        <h2>Fresh</h2>
-        <p>Fresh content</p>
-    </div>
-</div>
-
-<!-- AUTHENTICATION SECTION -->
-<div id="auth_container">
-	<c:if test="${not empty user}">
-    	<div id="tab_section">
-	        <ul class="sign w3-navbar w3-teal">
-		        <form id="logoutForm" method="POST" action="${contextPath}/logout">
-		            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-		        </form>
-	      		<li><c:out value="Hello ${user}"></c:out> | <a onclick="document.forms['logoutForm'].submit()">Logout</a></li>
-	        </ul>
+<div id="wrap">
+	<table border="0" cellspacing="0" style="width:100%" >
 	
-	    </div>
-	</c:if>
-	
-	<c:if test="${empty user}">
-    	
-	
-	    <div id="tab_section">
-	        <ul class="sign w3-navbar w3-teal">
-	        		 <li>Sing In</li>
-	<!--             <li><a href="#" onclick="openReg('sign_in')">Sing In</a></li> -->
-	<!--             <li><a href="#" onclick="openReg('sign_up')">Sign Up</a></li> -->
-	        </ul>
-	
-	    </div>
-	
-	
-	    <div id="sign_in" class="auth">
-	        <form method="POST" action="${contextPath}/j_security_check">
-	            <input data-name="username" class="b-input" type="text" id="username" autocomplete="username"
-	                   maxlength="255" name="username" placeholder="login">
-	            <input data-name="password" class="b-input" type="password" id="password" autocomplete="password"
-	                   maxlength="255" name="password" placeholder="password">
-	                   
-	            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-	            <div class="login">
-	            	<h4 class="text-center"><a href="${contextPath}/registration">Create an account</a></h4>
-	                <button type="submit">Login</button>
-	            </div>
-	        </form>
-	    </div>
-    </c:if>
-<!--     <div id="sign_up" class="auth"> -->
-<!--         <form> -->
-<!--             <input class="b-input" type="text" id="username" autocomplete="username" maxlength="255" name="username" -->
-<!--                    placeholder="login"><br> -->
-<!--             <input class="b-input" type="password" id="reg_password" autocomplete="password" maxlength="255" -->
-<!--                    name="password" -->
-<!--                    placeholder="password"><br> -->
-<!--             <input class="b-input" type="password" id="reg_password_repeat" autocomplete="password" maxlength="255" -->
-<!--                    name="password" -->
-<!--                    placeholder="repeat password"> -->
+		<tbody>
+			<tr>
+				<td style="vertical-align: top; text-align: center" class="main-b">
+					<table class="inner_wrap" cellspacing="0" cellpadding="0">
+						<colgroup>
+							<col>
+							<col class="inner_wrap_content">
+						</colgroup>
+						<tbody>
+							<tr>
+								<td> </td>
+								<td style="padding-left: 0px; padding-right: 0px; text-align: left;">
+									<div class="b-feed-panel" data-mode="hot"></div>
+									
+									<div class="stories">
+										<c:forEach items="${postList}" var="post">
+											<div class="story" data-story-id="4493954" data-visited="false" data-story-long="false">
+											
+												<!-- Not comleted  -->
+												<div class="story_left" > 
+													<div class="story__rating-block" data-vote="0" data-story-id="4493954" data-can-vote="true">
+														Rate												
+													</div>
+												</div>
+												
+												<!-- Story Section -->
+												<div>
+													<!--  Story Header -->
+													<div class="story__header">
+														<!-- Not comleted  -->
+														<div class="story__header-title">${post.title}</div>
+														<!-- Not comleted  -->
+														<div class="story__header-additional"></div>
+														
+													</div>
+													
+													<!--  Story Body -->
+													<div class="story__wrapper" style="display: block">
+														<div class="b-story__content b-story-blocks b-story-blocks_with-border" data-expanded="true">
+															<div class="b-story-blocks__wrapper" style="">
+																<img src="${contextPath}/files/${post.filename}" data-large-image="${contextPath}/files/${post.filename}" data-viewable="true" alt="description" style="" data-height="612">
+															</div>
+														</div>
+													</div>
+												</div>
+												
+											</div>
+										</c:forEach>
+									</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</td>
+			</tr>
 			
-<%-- 			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/> --%>
-            
-<!--             <div class="login"> -->
-<!--                 <button type="submit">Submit</button> -->
-<!--             </div> -->
-<!--         </form> -->
-<!--     </div> -->
-</div>
+		</tbody>
+	</table>
 
-<div id="footer">
-    Copyright © b1gs likemycat.net
 </div>
 
 <script>
@@ -170,5 +123,9 @@
 
 
 </body>
+
+<footer id="footer">
+    Copyright © b1gs likemycat.net
+</footer>
 
 </html>

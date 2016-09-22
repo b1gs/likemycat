@@ -3,6 +3,7 @@ package net.likemycat.account.model;
 import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -61,16 +62,14 @@ public class Post {
 		this.file = file;
 	}
 	
-	@ManyToOne
-	//@JoinColumn(name = "user_id", nullable = false)
-	@JoinColumn(name = "id", nullable = false , insertable=false , updatable=false)
-	//@JoinTable(name = "user_post" , joinColumns = @JoinColumn(name = "post_id"), inverseJoinColumns = @JoinColumn(name = "user_id") )
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "user_id", nullable = false)
 	public User getUser() {
 		return user;
 	}
 	
 	public void setUser(User user){
-		
+		this.user = user;
 	}
 
 }

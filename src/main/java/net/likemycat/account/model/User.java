@@ -12,7 +12,7 @@ import javax.persistence.*;
  *
  */
 @Entity
-@Table(name = "User")
+@Table(name = "user")
 public class User {
 	
 	private Long id;
@@ -68,9 +68,8 @@ public class User {
 	}
 
 	@OneToMany(mappedBy="user")
-	//@JoinTable(name = "user_post" , joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "post_id") )
 	public Set<Post> getPosts() {
-		return posts;
+		return this.posts;
 	}
 
 	public void setPosts(Set<Post> posts) {
