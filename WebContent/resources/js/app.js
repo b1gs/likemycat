@@ -2,9 +2,6 @@
  * Created by oleksandr.volkovskyi on 2/5/2016.
  */
 
-function watcher(){
-
-};
 
 function openTab(cityName) {
     var i;

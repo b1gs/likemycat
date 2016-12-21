@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <title>Create Post</title>
     <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
-    <link rel="stylesheet" href="resources/css/main.css">
+    <link rel="stylesheet" href="resources/css/post.css">
     <script src="resources/js/app.js"></script>
 </head>
 <body>
@@ -22,63 +22,39 @@
     </ul>
 </div>
 
-
+<div id="content-wrap" >
 <!-- CONTENT SECTION -->
 <div id="content">
     <div id="Hot" class="w3-container news">
         <div class="post">
         	<form:form method="POST" enctype="multipart/form-data" action="${contextPath}/add" modelAttribute="postForm">
-<%-- 	            <spring:bind path="title"> --%>
-		            <div class="form-group ${status.error ? 'has-error' : ''}">
-		                <form:input type="text" path="title" name="title" class="form-control" placeholder="Post title..."
-		                            autofocus="true" />
-		                <form:errors path="title"></form:errors>
-		            </div>
-<%-- 		        </spring:bind> --%>
+	            
+	            <div class="form-group ${status.error ? 'has-error' : ''}">
+	                <form:input id="post-title" type="text" path="title" name="title" class="form-control" placeholder="Post title..."
+	                            autofocus="true" />
+	                <form:errors path="title"></form:errors>
+	            </div>
+	           
 	            <!-- Create Post Section -->
-	            	
-<%-- 	            	<form:input type="hidden" path="filename" name="filename" value="123123" class="form-control" placeholder="Post title..." autofocus="true" /> --%>
-<%-- 	            	<form:errors path="filename"></form:errors> --%>
-	            <div id="post_type">
-<!-- 	                <button id="create_post1" class="w3-btn w3-green"> -->
-<!-- 	                    image -->
-<!-- 	                </button> -->
-	                
-					<table>
-<%-- 						<spring:bind path="file"> --%>
-	            		<div class="form-group ${status.error ? 'has-error' : ''}">
-							<tr><td>File to upload:</td><td><form:input path="file" type="file" name="file" class="w3-btn w3-green" /></td></tr>
-							<form:errors path="file"></form:errors>
-							<tr><td></td><td><form:button type="submit" value="Upload" class="w3-btn w3-green" >Upload</form:button></td></tr>
-						</div>
-<%-- 						</spring:bind> --%>
-					</table>
-			
-<!-- 	                <button id="create_post2" class="w3-btn w3-green"> -->
-<!-- 	                    video -->
-<!-- 	                </button> -->
+	            <div id="pick-image">
+	           		<div class="form-group ${status.error ? 'has-error' : ''}">
+						<form:label path="">File to upload:</form:label><form:input path="file" type="file" name="file"  />
+						<form:errors path="file"></form:errors>
+					</div>
+                </div>
+                <div id="create-post" >
+                	<form:button type="submit" value="Upload" class="w3-btn w3-green" >Upload</form:button>
                 </div>
            	</form:form>
-            
-<!--             <br><br> -->
-
-<!--             <div id="1" align="left"> -->
-<!--                 <button id="add_post" class="w3-btn w3-green"> -->
-<!--                     Add post -->
-<!--                 </button> -->
-<!--                 <button id="save_post" class="w3-btn w3-green"> -->
-<!--                     Save draft -->
-<!--                 </button> -->
-<!--             </div> -->
         </div>
     </div>
 
 </div>
 
 
-<div id="footer">
-    Copyright ï¿½ b1gs likemycat.net
-</div>
+<footer id="footer">
+    Copyright © b1gs likemycat.net
+</footer>
 
 <script>
     openCity(null, "Hot");

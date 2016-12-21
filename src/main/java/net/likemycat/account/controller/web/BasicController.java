@@ -44,13 +44,22 @@ public class BasicController {
 //		
 //	}
 	
-//	@RequestMapping("/login")
-//	public ModelAndView loginPage(){
-//		
-//		ModelAndView model = new ModelAndView();
-//		model.setViewName("login");
-//		return model;
-//		
-//	}
+	@RequestMapping("/login")
+	public ModelAndView loginPage(){
+		
+		ModelAndView model = new ModelAndView();
+		model.setViewName("login");
+		return model;
+		
+	}
+	
+	@RequestMapping("/new")
+	public ModelAndView newPage(){
+		
+		ModelAndView model = new ModelAndView();
+		model.setViewName("new");
+		return model;
+		
+	}
 	
 }
