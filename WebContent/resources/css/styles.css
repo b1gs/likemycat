@@ -210,3 +210,7 @@ div#sign_in input {
 div.side-menu-wrap {
 	margin: 3px;
 }
+
+.post-image {
+	width: 620px;
+}

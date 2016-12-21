@@ -71,7 +71,7 @@ public class UserController {
 		modelObj.setViewName("welcome");
 		List<Post> postList = postService.findAll();
 		modelObj.addObject("postList", postList);
-
+		
 		if (SecurityContextHolder.getContext().getAuthentication().getAuthorities().contains(new SimpleGrantedAuthority("ROLE_USER"))) {
 			modelObj.addObject("user", SecurityContextHolder.getContext().getAuthentication().getName());
 		}

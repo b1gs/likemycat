@@ -53,8 +53,8 @@
 									</div>
 								</div>
 							</div>
-							<div class="story__wrapper" style="display: block">
-								<img src="resources/images/148221171912795221.png" >
+							<div class="story-wrapper" style="display: block">
+								<img class="post-image" src="resources/images/148221171912795221.png" />
 							</div>
 						</div>
 						<div class="story-left">
@@ -67,40 +67,41 @@
 							</div>
 						</div>
 					</div>
-					<div class="story">
-						<div class="story-main">
-							<div class="story-header">
-								<div class="story-header-title">Fun Story</div>
-								<div class="story-header-additional">
-									<div class="story-toggle-button" title="Show Post" data-story-id="4697401" data-story-long="false" data-story-type="gtpost">
-										<i class="i-sprite--inline-block i-sprite--feed__gtpost-hide"></i>
-									</div>
-
-									<!--/noindex-->
-									<div class="story-header-additional-wrapper">
-										<a class="story-comments-count story-to-comments" href="#">167 Comments</a> <img src="resources/images/user.svg" width="10" height="11" class="story__user-icon"><a class="story__author" href="#">alfer1224</a>
-										<div class="story__date" title="20 dec 2016 at 7:30">6 hours</div>
+					<c:forEach items="${postList}" var="post">
+						<div class="story">
+							<div class="story-main">
+								<div class="story-header">
+									<div class="story-header-title">${post.title} </div>
+									<div class="story-header-additional">
+										<div class="story-toggle-button" title="Show Post" data-story-id="4697401" data-story-long="false" data-story-type="gtpost">
+											<i class="i-sprite--inline-block i-sprite--feed__gtpost-hide"></i>
+										</div>
+	
+										<!--/noindex-->
+										<div class="story-header-additional-wrapper">
+											<a class="story-comments-count story-to-comments" href="#">167 Comments</a> <img src="resources/images/user.svg" width="10" height="11" class="story__user-icon"><a class="story__author" href="#">alfer1224</a>
+											<div class="story__date" title="20 dec 2016 at 7:30">6 hours</div>
+										</div>
 									</div>
 								</div>
-							</div>
-							<div class="story__wrapper" style="display: block">
-								<img src="resources/images/148221171912795221.png" >
-							</div>
-						</div>
-						<div class="story-left">
-							<div class="story-rating-block" data-vote="0" data-story-id="4687162" data-can-vote="true">
-								<div class="story-rating-up" title=""></div>
-								<div class="story-rating-count">
-									1608
+								<div class="story-wrapper" style="display: block">
+									<img class="post-image" src="${contextPath}/s/${post.filename}" >
 								</div>
-								<div class="story-rating-down" title=""></div>
+							</div>
+							<div class="story-left">
+								<div class="story-rating-block" data-vote="0" data-story-id="4687162" data-can-vote="true">
+									<div class="story-rating-up" title=""></div>
+									<div class="story-rating-count">
+										1
+									</div>
+									<div class="story-rating-down" title=""></div>
+								</div>
 							</div>
 						</div>
-					</div>
+					</c:forEach>
 				</div>
 			</section>
 		</section>
-		<aside id="empty"></aside>
 	</main>
 
 <!-- AUTHENTICATION SECTION -->
@@ -185,8 +186,7 @@
             x[i].style.display = "none";
         }
         document.getElementById(cityName).style.display = "block";
-    }
-    ;
+    };
 </script>
 
 

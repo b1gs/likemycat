@@ -54,22 +54,12 @@ public class FileUploadController {
 	@GetMapping("/add")
 	public String listUploadedFiles(Model model) throws IOException {
 
-		// model.addAttribute("files", storageService
-		// .loadAll()
-		// .map(path ->
-		// MvcUriComponentsBuilder
-		// .fromMethodName(FileUploadController.class, "serveFile",
-		// path.getFileName().toString())
-		// .build().toString())
-		// .collect(Collectors.toList()));
 		model.addAttribute("postForm", new Post());
-		// model.setViewName("add");
 		return "add";
 	}
 
-	@GetMapping("/files/{filename:.+}")
+	@GetMapping("/s/{filename:.+}")
     @ResponseBody
-    //public ResponseEntity<Resource> serveFile(@PathVariable String filename, HttpServletResponse response) {
     public void serveFile(@PathVariable String filename, HttpServletResponse response) {
 
 		byte [] bytes =null;
@@ -89,10 +79,8 @@ public class FileUploadController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-        
     }
 
-	//
 	@PostMapping("/add")
 	public String handleFileUpload(@RequestParam("file") MultipartFile file, @ModelAttribute("postForm") Post postForm,
 			RedirectAttributes redirectAttributes) {
