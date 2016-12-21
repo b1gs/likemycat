@@ -1,0 +1,7 @@
+
+In order to setup and run project: 
+ - install database. 
+ - change database driver and set right credentials at src\main\resources\application.properties.
+ - execute script db.sql on installed database. Script location( src\main\resources\ )
+	execution command: mysql -u username -p databaseName < db.sql
+ - Build project with mvn clean install and deploy required war file to container. 
