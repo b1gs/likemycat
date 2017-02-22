@@ -62,7 +62,7 @@ public class Post {
 		this.file = file;
 	}
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "user_id", nullable = false)
 	public User getUser() {
 		return user;

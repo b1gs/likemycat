@@ -59,3 +59,17 @@ CREATE TABLE `post` (
   `user_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+--
+-- Table structure for table `rating`
+--
+
+DROP TABLE IF EXISTS `rating`;
+CREATE TABLE `rating` (
+  `rating_id` int(11) NOT NULL AUTO_INCREMENT,
+  `rateValue` int(6) DEFAULT 0,
+  `username` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`rating_id`),
+  CONSTRAINT fk_post_rating FOREIGN KEY (`rating_id`) REFERENCES `post` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
